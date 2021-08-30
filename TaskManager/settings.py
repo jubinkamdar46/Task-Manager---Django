@@ -10,10 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import os
+
 from pathlib import Path
 from django.contrib.messages import constants as messages
+#for heroku
+import os
 import django_heroku
+import dj_database_url
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'TaskManager.urls'
@@ -136,6 +142,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#new
-STATIC_ROOT = os.path.goin(BASE_DIR,'static')
+#for heroku middleware also added and below stuff
+
+STATICFILES_STORAGE =  'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 django_heroku.settings(locals())
+
