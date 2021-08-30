@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<style>
+    .recent-task{
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-due p{
+        color: rgb(223, 68, 68);
+        font-weight: bold;
+        font-size: 15px;
+    }
+</style>
+<!-- recent task  -->
+<div class="container-fluid">
+    <div class="card recenttask-container text-white  mt-3">
+        <div class="card-header">Recent Task</div>
+        <div class="card-body recent-task">
+            <div class="card-details">
+                <h5 class="card-title">{{ recent_task.task_title }}</h5>
+                <p class="card-text">{{ recent_task.task_description }}</p>
+            </div>
+            <div class="card-due">
+                <p>{{ recent_task.task_duedate }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- all tasks -->
+<div class="container-fluid">
+    <table class="table mt-3">
+        <div class="accessibility-container">
+            <h1 class="table-heading">All Tasks</h1>
+            <a href="addtask"> <button class="add-btn">ADD<i class="fa fa-plus-circle"></i></button> </a>
+        </div>
+        <thead class="thead-dark">
+            <tr>
+                <th>Sr No</th>
+                <th>Title</th>
+                <th>Due Date</th>
+                <th>Priority</th>
+                <th>Assigned By</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in task_data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ x.task_title }}</td>
+                <td>{{ x.task_duedate }}</td>
+
+                <td class="priority-{{ x.task_priority }}">{{ x.task_priority }}</td>
+                <td>{{ x.task_assignee }}</td>
+                <td>
+                    <a href="update/{{ x.id }}"><i class="fas fa-edit"></i></a>
+                    <a href="delete/{{ x.id }}"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

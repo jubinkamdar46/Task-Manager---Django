@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}Update Task{% endblock title %}
+
+{% block content %}
+
+{% for data in task_details %}
+
+<div class="container-fluid">
+    <div class="page-header">
+        <h1 style="text-align: center;text-transform: uppercase">Edit Task</h1>
+    </div>
+    <form action="update/{{ data.id }}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="taskname">Task Name</label>
+            <input type="text" class="form-control" id="taskname" placeholder="Complete Project" name="taskname" value="{{ data.task_title }}">
+        </div>
+        <div class="form-group">
+            <label for="taskdecription">Text Description</label>
+            <textarea class="form-control" id="taskdecription" rows="2" name="taskdecription" >{{ data.task_description }}</textarea>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="Due Date" name="duedate" value="{{ data.task_duedate|date:"Y-m-d"  }}">
+                </div>
+                <div class="col">
+                    <select class="form-control" id="priority" name="priority" required>
+                        <option value="" disabled selected>Select priority...</option>
+                        {% if data.task_priority == "High" %}
+                            <option value="High" selected>High</option>
+                            <option value="Low">Low</option>
+                        {% else %}
+                            <option value="High" >High</option>
+                            <option value="Low" selected>Low</option>
+                        {% endif %}
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="assignto">Assign To</label>
+            <select class="form-control" id="assignto" name="assignto">
+                <option value="{{ data.task_assignto }}" disabled selected>{{ data.task_assignto }}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+{% endfor %}
+</div>
+{% endblock content %}
+

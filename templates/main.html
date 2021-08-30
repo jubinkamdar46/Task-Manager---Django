@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+      body{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .heading{
+        position: absolute;
+        top: 0;
+        font-size: 50px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      table{
+        height: 60%;
+        width: 60%;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      table th{
+        padding: 10px 50px;
+        font-size: 30px;
+      }
+      table td{
+        padding: 10px 50px;
+        font-size: 20px;
+      }
+    </style>
+    <title>Home</title>
+
+  </head>
+  <body>
+    <h2 class="heading">User Data</h2>
+    <table border="2">
+      <tr>
+        <th>Email:</th>
+        <td>{{email}}</td>
+        <th>Password:</th>
+        <td>{{password}}</td>
+      </tr>
+      <tr>
+        <th>Age:</th>
+        <td>{{age}}</td>
+        <th>Gender:</th>
+        <td>{{gender}}</td>
+      </tr>
+      <tr>
+        <th>State:</th>
+        <td>{{state}}</td>
+        <th>City:</th>
+        <td>{{city}}</td>
+      </tr>
+      <tr>
+        <th>Occupation:</th>
+        <td colspan="3">{{occupation}}</td>
+      </tr>
+    </table>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
